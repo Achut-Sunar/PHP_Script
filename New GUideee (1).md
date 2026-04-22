@@ -134,14 +134,14 @@ All resources follow the `A1-G3-` prefix for consistent identification and manag
 | ---------------------------- | ------------ | ---------- | --------------------------- |
 | **VPC**                      | 10.0.0.0/16  | 65,536     | Entire infrastructure       |
 | **Public Subnets**           |              |            |                             |
-| A1-G3-Public-Subnet-AZ1      | 10.0.24.0/24 | 251        | ALB, NAT (us-east-1a)       |
-| A1-G3-Public-Subnet-AZ2      | 10.0.25.0/24 | 251        | ALB redundancy (us-east-1b) |
+| A1-G3-Public-Subnet-AZ1      | 10.0.1.0/24 | 251        | ALB, NAT (us-east-1a)       |
+| A1-G3-Public-Subnet-AZ2      | 10.0.2.0/24 | 251        | ALB redundancy (us-east-1b) |
 | **Private EC2 Subnets**      |              |            |                             |
-| A1-G3-Private-EC2-Subnet-AZ1 | 10.0.26.0/24 | 251        | Web servers (us-east-1a)    |
-| A1-G3-Private-EC2-Subnet-AZ2 | 10.0.27.0/24 | 251        | Web servers (us-east-1b)    |
+| A1-G3-Private-EC2-Subnet-AZ1 | 10.0.3.0/24 | 251        | Web servers (us-east-1a)    |
+| A1-G3-Private-EC2-Subnet-AZ2 | 10.0.4.0/24 | 251        | Web servers (us-east-1b)    |
 | **Private RDS Subnets**      |              |            |                             |
-| A1-G3-Private-RDS-Subnet-AZ1 | 10.0.28.0/24 | 251        | Database (us-east-1a)       |
-| A1-G3-Private-RDS-Subnet-AZ2 | 10.0.29.0/24 | 251        | Database (us-east-1b)       |
+| A1-G3-Private-RDS-Subnet-AZ1 | 10.0.5.0/24 | 251        | Database (us-east-1a)       |
+| A1-G3-Private-RDS-Subnet-AZ2 | 10.0.6.0/24 | 251        | Database (us-east-1b)       |
 
 
 ### Deployment Region
@@ -307,7 +307,7 @@ You will create 6 subnets across 2 Availability Zones. Each AZ contains:
 | ----------------- | ------------------------- |
 | Subnet name       | `A1-G3-Public-Subnet-AZ1` |
 | Availability Zone | `us-east-1a`              |
-| IPv4 CIDR block   | `10.0.24.0/24`            |
+| IPv4 CIDR block   | `10.0.1.0/24`            |
 
 
 Click **Add new subnet** (do NOT click Create yet)
@@ -321,7 +321,7 @@ Click **Add new subnet** (do NOT click Create yet)
 | ----------------- | ------------------------- |
 | Subnet name       | `A1-G3-Public-Subnet-AZ2` |
 | Availability Zone | `us-east-1b`              |
-| IPv4 CIDR block   | `10.0.25.0/24`            |
+| IPv4 CIDR block   | `10.0.2.0/24`            |
 
 
 Click **Add new subnet**
@@ -335,7 +335,7 @@ Click **Add new subnet**
 | ----------------- | ------------------------------ |
 | Subnet name       | `A1-G3-Private-EC2-Subnet-AZ1` |
 | Availability Zone | `us-east-1a`                   |
-| IPv4 CIDR block   | `10.0.26.0/24`                 |
+| IPv4 CIDR block   | `10.0.3.0/24`                 |
 
 
 Click **Add new subnet**
@@ -349,7 +349,7 @@ Click **Add new subnet**
 | ----------------- | ------------------------------ |
 | Subnet name       | `A1-G3-Private-EC2-Subnet-AZ2` |
 | Availability Zone | `us-east-1b`                   |
-| IPv4 CIDR block   | `10.0.27.0/24`                 |
+| IPv4 CIDR block   | `10.0.4.0/24`                 |
 
 
 Click **Add new subnet**
@@ -363,7 +363,7 @@ Click **Add new subnet**
 | ----------------- | ------------------------------ |
 | Subnet name       | `A1-G3-Private-RDS-Subnet-AZ1` |
 | Availability Zone | `us-east-1a`                   |
-| IPv4 CIDR block   | `10.0.28.0/24`                 |
+| IPv4 CIDR block   | `10.0.5.0/24`                 |
 
 
 Click **Add new subnet**
@@ -377,7 +377,7 @@ Click **Add new subnet**
 | ----------------- | ------------------------------ |
 | Subnet name       | `A1-G3-Private-RDS-Subnet-AZ2` |
 | Availability Zone | `us-east-1b`                   |
-| IPv4 CIDR block   | `10.0.29.0/24`                 |
+| IPv4 CIDR block   | `10.0.6.0/24`                 |
 
 
 Now click **Create subnet** (bottom right)
@@ -411,12 +411,12 @@ Go to subnet list and verify:
 
 | Subnet Name                  | AZ         | CIDR         | Auto-assign public IPv4 |
 | ---------------------------- | ---------- | ------------ | ----------------------- |
-| A1-G3-Public-Subnet-AZ1      | us-east-1a | 10.0.24.0/24 | ✅ Yes                   |
-| A1-G3-Public-Subnet-AZ2      | us-east-1b | 10.0.25.0/24 | ✅ Yes                   |
-| A1-G3-Private-EC2-Subnet-AZ1 | us-east-1a | 10.0.26.0/24 | ❌ No                    |
-| A1-G3-Private-EC2-Subnet-AZ2 | us-east-1b | 10.0.27.0/24 | ❌ No                    |
-| A1-G3-Private-RDS-Subnet-AZ1 | us-east-1a | 10.0.28.0/24 | ❌ No                    |
-| A1-G3-Private-RDS-Subnet-AZ2 | us-east-1b | 10.0.29.0/24 | ❌ No                    |
+| A1-G3-Public-Subnet-AZ1      | us-east-1a | 10.0.1.0/24 | ✅ Yes                   |
+| A1-G3-Public-Subnet-AZ2      | us-east-1b | 10.0.2.0/24 | ✅ Yes                   |
+| A1-G3-Private-EC2-Subnet-AZ1 | us-east-1a | 10.0.3.0/24 | ❌ No                    |
+| A1-G3-Private-EC2-Subnet-AZ2 | us-east-1b | 10.0.4.0/24 | ❌ No                    |
+| A1-G3-Private-RDS-Subnet-AZ1 | us-east-1a | 10.0.5.0/24 | ❌ No                    |
+| A1-G3-Private-RDS-Subnet-AZ2 | us-east-1b | 10.0.6.0/24 | ❌ No                    |
 
 
 📸 **Screenshot Required:** Subnet list showing all 6 subnets with correct names, AZs, and CIDRs
@@ -460,7 +460,7 @@ EC2 instances in private subnets need to download software (`yum install`), but 
 **Verification:**
 
 - State = Available
-- Subnet = A1-G3-Public-Subnet-AZ1 (10.0.24.0/24)
+- Subnet = A1-G3-Public-Subnet-AZ1 (10.0.1.0/24)
 - Elastic IP address is shown (e.g., 54.xxx.xxx.xxx)
 
 📸 **Screenshot Required:** NAT Gateway showing State = Available with Elastic IP address
@@ -963,7 +963,7 @@ Click **View all instances**
 | Availability Zone    | us-east-1a                                     |
 | VPC ID               | A1-G3-VPC                                      |
 | Subnet ID            | A1-G3-Private-EC2-Subnet-AZ1                   |
-| Private IPv4 address | 10.0.3.x (something in the 10.0.26.0/24 range) |
+| Private IPv4 address | 10.0.3.x (something in the 10.0.3.0/24 range) |
 | Public IPv4 address  | — (blank, this is correct)                     |
 | Security groups      | A1-G3-EC2-SG                                   |
 | IAM role             | Inventory-App-Role                             |
@@ -1078,8 +1078,8 @@ sudo chmod 755 /var/www/html/aws.phar
 ```bash
 sudo yum install git -y
 cd ~
-git clone git clone https://github.com/Achut-Sunar/PHP_Script.git
-sudo cp -r PHP_Script/* /var/www/html/
+git clone https://github.com/Achut-Sunar/CloudInfrastructurePHPScript-.git
+sudo cp -r CloudInfrastructurePHPScript-/* /var/www/html/
 ```
 
 **Step 4.2 - Fix Permissions and SELinux (CRITICAL):**
@@ -1315,13 +1315,13 @@ After selecting AZs, the subnet dropdown shows subnets for those zones.
 
 Select both:
 
-- ✅ **10.0.28.0/24** (A1-G3-Private-RDS-Subnet-AZ1)
-- ✅ **10.0.29.0/24** (A1-G3-Private-RDS-Subnet-AZ2)
+- ✅ **10.0.5.0/24** (A1-G3-Private-RDS-Subnet-AZ1)
+- ✅ **10.0.6.0/24** (A1-G3-Private-RDS-Subnet-AZ2)
 
 **Verification before creating:**
 
 - Availability Zones: 2 selected
-- Subnets: 2 selected (10.0.28.0/24 and 10.0.29.0/24)
+- Subnets: 2 selected (10.0.5.0/24 and 10.0.6.0/24)
 
 Click **Create** (bottom right)
 
@@ -1654,7 +1654,7 @@ Since you pushed your `Countrydatadump.sql` file to your GitHub repo and ran the
 **Navigate to your code folder:**
 
 ```bash
-cd ~/PHP_Script
+cd ~/CloudInfrastructurePHPScript-
 ```
 
 **Verify the file is present:**
@@ -1763,7 +1763,7 @@ mysql -h <endpoint> -u admin -p <database-name> < <sql-file>
 **Actual command:**
 
 ```bash
-mysql -h <YOUR-RDS-ENDPOINT> -u admin -p countries < ~/PHP_Script/Countrydatadump.sql
+mysql -h <YOUR-RDS-ENDPOINT> -u admin -p countries < ~/CloudInfrastructurePHPScript-/Countrydatadump.sql
 ```
 
 Replace the endpoint with your actual RDS endpoint.
@@ -2362,12 +2362,12 @@ You must select 2 Availability Zones. For each:
 **Availability Zone us-east-1a:**
 
 - ✅ Check us-east-1a
-- Subnet: Select `A1-G3-Public-Subnet-AZ1 (10.0.24.0/24)`
+- Subnet: Select `A1-G3-Public-Subnet-AZ1 (10.0.1.0/24)`
 
 **Availability Zone us-east-1b:**
 
 - ✅ Check us-east-1b
-- Subnet: Select `A1-G3-Public-Subnet-AZ2 (10.0.25.0/24)`
+- Subnet: Select `A1-G3-Public-Subnet-AZ2 (10.0.2.0/24)`
 
 ⚠️ **CRITICAL:** Use PUBLIC subnets, not private subnets. The ALB must be internet-facing.
 
@@ -2496,8 +2496,8 @@ Click **Next**
 
 Select both private EC2 subnets:
 
-- ✅ `A1-G3-Private-EC2-Subnet-AZ1 | us-east-1a | 10.0.26.0/24`
-- ✅ `A1-G3-Private-EC2-Subnet-AZ2 | us-east-1b | 10.0.27.0/24`
+- ✅ `A1-G3-Private-EC2-Subnet-AZ1 | us-east-1a | 10.0.3.0/24`
+- ✅ `A1-G3-Private-EC2-Subnet-AZ2 | us-east-1b | 10.0.4.0/24`
 
 ⚠️ **CRITICAL:** Use the PRIVATE EC2 subnets, not public or RDS subnets.
 
@@ -2942,7 +2942,7 @@ After all members complete their tasks, perform this full system validation:
 **Steps:**
 
 1. Open browser
-2. Navigate to: `http://A1-G3-ALB-xxxxxx.us-east-1.elb.amazonaws.com/index.php`
+2. Navigate to: `http://A1-G3-ALB-xxxxxx.us-east-1.elb.amazonaws.com/index.php---`
 3. Verify:
   - ✅ Page loads
   - ✅ Country data displays
@@ -3160,21 +3160,21 @@ This architecture implements AWS best practices for a three-tier web application
 
 **Justification:**
 
-**Public Tier (10.0.24.0/24, 10.0.25.0/24):**
+**Public Tier (10.0.1.0/24, 10.0.2.0/24):**
 
 - Contains only internet-facing resources (ALB, NAT)
 - Enables principle of least exposure
 - Isolates internet ingress/egress points
 - Simplifies security auditing
 
-**Application Tier (10.0.26.0/24, 10.0.27.0/24):**
+**Application Tier (10.0.3.0/24, 10.0.4.0/24):**
 
 - EC2 instances completely isolated from direct internet access
 - All traffic routed through ALB (controlled entry point)
 - Outbound internet via NAT (controlled exit point)
 - Prevents direct SSH access from internet
 
-**Data Tier (10.0.28.0/24, 10.0.29.0/24):**
+**Data Tier (10.0.5.0/24, 10.0.6.0/24):**
 
 - RDS in completely isolated subnets with NO internet route
 - Cannot initiate or receive external connections
